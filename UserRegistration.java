@@ -9,22 +9,32 @@ public class UserRegistration {
 
     public static void main(String[] args) {
 
-        // Create Scanner object to read user input
+        // Create Scanner object
         Scanner scanner = new Scanner(System.in);
 
         // Create validator object
         UserValidator validator = new UserValidator();
 
-        // Read first name from user
+        // Read first name
         System.out.print("Enter First Name: ");
         String firstName = scanner.nextLine();
+
+        // Read last name
+        System.out.print("Enter Last Name: ");
+        String lastName = scanner.nextLine();
 
         // Validate first name
         if (validator.validateFirstName(firstName)) {
             System.out.println("Valid First Name.");
         } else {
             System.out.println("Invalid First Name.");
-            System.out.println("First name should start with a capital letter and contain at least 3 characters.");
+        }
+
+        // Validate last name
+        if (validator.validateLastName(lastName)) {
+            System.out.println("Valid Last Name.");
+        } else {
+            System.out.println("Invalid Last Name.");
         }
 
         scanner.close();

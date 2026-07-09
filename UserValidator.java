@@ -7,12 +7,9 @@ import java.util.regex.Pattern;
  */
 public class UserValidator {
 
-    // Regex:
-    // ^             -> Start of string
-    // [A-Z]         -> First character must be uppercase
-    // [a-z]{2,}     -> Minimum two lowercase letters after first character
-    // $             -> End of string
-    private static final String FIRST_NAME_REGEX = "^[A-Z][a-z]{2,}$";
+    // Regular expression for validating first and last name
+    // First letter must be uppercase followed by at least two lowercase letters
+    private static final String NAME_REGEX = "^[A-Z][a-z]{2,}$";
 
     /**
      * Validates the user's first name.
@@ -21,6 +18,16 @@ public class UserValidator {
      * @return true if valid, otherwise false
      */
     public boolean validateFirstName(String firstName) {
-        return Pattern.matches(FIRST_NAME_REGEX, firstName);
+        return Pattern.matches(NAME_REGEX, firstName);
+    }
+
+    /**
+     * Validates the user's last name.
+     *
+     * @param lastName User's last name
+     * @return true if valid, otherwise false
+     */
+    public boolean validateLastName(String lastName) {
+        return Pattern.matches(NAME_REGEX, lastName);
     }
 }
