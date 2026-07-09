@@ -15,9 +15,11 @@ public class UserValidator {
             "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$";
 
     // Mobile Number Regex
-    // Format: Country code followed by a space and a 10-digit mobile number
-    // Example: 91 9919819801
     private static final String MOBILE_REGEX = "^[0-9]{2}\\s[0-9]{10}$";
+
+    // Password Rule 1
+    // Minimum 8 characters
+    private static final String PASSWORD_REGEX = "^.{8,}$";
 
     /**
      * Validates the user's first name.
@@ -45,5 +47,13 @@ public class UserValidator {
      */
     public boolean validateMobileNumber(String mobileNumber) {
         return Pattern.matches(MOBILE_REGEX, mobileNumber);
+    }
+
+    /**
+     * Validates the user's password.
+     * Rule 1: Password should contain a minimum of 8 characters.
+     */
+    public boolean validatePassword(String password) {
+        return Pattern.matches(PASSWORD_REGEX, password);
     }
 }
