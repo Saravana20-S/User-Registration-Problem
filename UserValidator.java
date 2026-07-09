@@ -17,9 +17,11 @@ public class UserValidator {
     // Mobile Number Regex
     private static final String MOBILE_REGEX = "^[0-9]{2}\\s[0-9]{10}$";
 
-    // Password Rule 1
-    // Minimum 8 characters
-    private static final String PASSWORD_REGEX = "^.{8,}$";
+    // Password Rules:
+    // Rule 1 -> Minimum 8 characters
+    // Rule 2 -> At least one uppercase letter
+    private static final String PASSWORD_REGEX =
+            "^(?=.*[A-Z]).{8,}$";
 
     /**
      * Validates the user's first name.
