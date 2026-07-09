@@ -21,8 +21,9 @@ public class UserValidator {
     // Rule 1 -> Minimum 8 characters
     // Rule 2 -> At least one uppercase letter
     // Rule 3 -> At least one numeric digit
+    // Rule 4 -> Exactly one special character
     private static final String PASSWORD_REGEX =
-            "^(?=.*[A-Z])(?=.*\\d).{8,}$";
+            "^(?=.*[A-Z])(?=.*\\d)(?=(?:.*[^a-zA-Z0-9]){1})(?!.*[^a-zA-Z0-9].*[^a-zA-Z0-9]).{8,}$";
 
     /**
      * Validates the user's first name.
@@ -57,6 +58,7 @@ public class UserValidator {
      * Rule 1: Minimum 8 characters
      * Rule 2: At least one uppercase letter
      * Rule 3: At least one numeric digit
+     * Rule 4: Exactly one special character
      */
     public boolean validatePassword(String password) {
         return Pattern.matches(PASSWORD_REGEX, password);
