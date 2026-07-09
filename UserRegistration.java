@@ -25,6 +25,9 @@ public class UserRegistration {
         System.out.print("Enter Email: ");
         String email = scanner.nextLine();
 
+        System.out.print("Enter Mobile Number: ");
+        String mobileNumber = scanner.nextLine();
+
         // Validate First Name
         if (validator.validateFirstName(firstName)) {
             System.out.println("Valid First Name.");
@@ -44,6 +47,13 @@ public class UserRegistration {
             System.out.println("Valid Email.");
         } else {
             System.out.println("Invalid Email.");
+        }
+
+        // Validate Mobile Number
+        if (validator.validateMobileNumber(mobileNumber)) {
+            System.out.println("Valid Mobile Number.");
+        } else {
+            System.out.println("Invalid Mobile Number.");
         }
 
         scanner.close();
