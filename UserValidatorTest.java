@@ -3,6 +3,8 @@ package com.oops.userregistration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * JUnit Test Cases for User Registration Validation.
@@ -77,5 +79,51 @@ public class UserValidatorTest {
     @Test
     public void givenInvalidPassword_WhenValidated_ShouldReturnFalse() {
         Assertions.assertFalse(validator.validatePassword("password"));
+    }
+
+    // ---------- Parameterized Test : Valid Emails ----------
+
+    /**
+     * Validates multiple valid email addresses.
+     */
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "abc@yahoo.com",
+            "abc-100@yahoo.com",
+            "abc.100@yahoo.com",
+            "abc111@abc.com",
+            "abc-100@abc.net",
+            "abc.100@abc.com.au",
+            "abc@1.com",
+            "abc@gmail.com.com",
+            "abc+100@gmail.com"
+    })
+    public void givenMultipleValidEmails_WhenValidated_ShouldReturnTrue(String email) {
+        Assertions.assertTrue(validator.validateEmail(email));
+    }
+
+    // ---------- Parameterized Test : Invalid Emails ----------
+
+    /**
+     * Validates multiple invalid email addresses.
+     */
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "abc",
+            "abc@.com.my",
+            "abc123@gmail.a",
+            "abc123@.com",
+            "abc123@.com.com",
+            ".abc@abc.com",
+            "abc()*@gmail.com",
+            "abc@%*.com",
+            "abc..2002@gmail.com",
+            "abc.@gmail.com",
+            "abc@abc@gmail.com",
+            "abc@gmail.com.1a",
+            "abc@gmail.com.aa.au"
+    })
+    public void givenMultipleInvalidEmails_WhenValidated_ShouldReturnFalse(String email) {
+        Assertions.assertFalse(validator.validateEmail(email));
     }
 }
