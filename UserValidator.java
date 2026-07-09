@@ -20,8 +20,9 @@ public class UserValidator {
     // Password Rules:
     // Rule 1 -> Minimum 8 characters
     // Rule 2 -> At least one uppercase letter
+    // Rule 3 -> At least one numeric digit
     private static final String PASSWORD_REGEX =
-            "^(?=.*[A-Z]).{8,}$";
+            "^(?=.*[A-Z])(?=.*\\d).{8,}$";
 
     /**
      * Validates the user's first name.
@@ -53,7 +54,9 @@ public class UserValidator {
 
     /**
      * Validates the user's password.
-     * Rule 1: Password should contain a minimum of 8 characters.
+     * Rule 1: Minimum 8 characters
+     * Rule 2: At least one uppercase letter
+     * Rule 3: At least one numeric digit
      */
     public boolean validatePassword(String password) {
         return Pattern.matches(PASSWORD_REGEX, password);
