@@ -15,26 +15,35 @@ public class UserRegistration {
         // Create validator object
         UserValidator validator = new UserValidator();
 
-        // Read first name
+        // Read user details
         System.out.print("Enter First Name: ");
         String firstName = scanner.nextLine();
 
-        // Read last name
         System.out.print("Enter Last Name: ");
         String lastName = scanner.nextLine();
 
-        // Validate first name
+        System.out.print("Enter Email: ");
+        String email = scanner.nextLine();
+
+        // Validate First Name
         if (validator.validateFirstName(firstName)) {
             System.out.println("Valid First Name.");
         } else {
             System.out.println("Invalid First Name.");
         }
 
-        // Validate last name
+        // Validate Last Name
         if (validator.validateLastName(lastName)) {
             System.out.println("Valid Last Name.");
         } else {
             System.out.println("Invalid Last Name.");
+        }
+
+        // Validate Email
+        if (validator.validateEmail(email)) {
+            System.out.println("Valid Email.");
+        } else {
+            System.out.println("Invalid Email.");
         }
 
         scanner.close();

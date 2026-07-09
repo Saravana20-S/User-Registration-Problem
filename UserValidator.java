@@ -8,8 +8,16 @@ import java.util.regex.Pattern;
 public class UserValidator {
 
     // Regular expression for validating first and last name
-    // First letter must be uppercase followed by at least two lowercase letters
     private static final String NAME_REGEX = "^[A-Z][a-z]{2,}$";
+
+    // Regular expression for validating email
+    // Examples:
+    // abc@bl.co
+    // abc.xyz@bl.co
+    // abc@bl.co.in
+    // abc.xyz@bl.co.in
+    private static final String EMAIL_REGEX =
+            "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$";
 
     /**
      * Validates the user's first name.
@@ -29,5 +37,15 @@ public class UserValidator {
      */
     public boolean validateLastName(String lastName) {
         return Pattern.matches(NAME_REGEX, lastName);
+    }
+
+    /**
+     * Validates the user's email address.
+     *
+     * @param email User's email
+     * @return true if valid, otherwise false
+     */
+    public boolean validateEmail(String email) {
+        return Pattern.matches(EMAIL_REGEX, email);
     }
 }
