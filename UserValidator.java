@@ -29,29 +29,59 @@ public class UserValidator {
     /**
      * Validates the user's first name.
      */
-    public boolean validateFirstName(String firstName) {
-        return Pattern.matches(NAME_REGEX, firstName);
+    public boolean validateFirstName(String firstName) throws UserRegistrationException {
+
+        if (Pattern.matches(NAME_REGEX, firstName)) {
+            return true;
+        }
+
+        throw new UserRegistrationException(
+                UserRegistrationException.ExceptionType.INVALID_FIRST_NAME,
+                "Invalid First Name");
     }
+
 
     /**
      * Validates the user's last name.
      */
-    public boolean validateLastName(String lastName) {
-        return Pattern.matches(NAME_REGEX, lastName);
+    public boolean validateLastName(String lastName) throws UserRegistrationException {
+
+        if (Pattern.matches(NAME_REGEX, lastName)) {
+            return true;
+        }
+
+        throw new UserRegistrationException(
+                UserRegistrationException.ExceptionType.INVALID_LAST_NAME,
+                "Invalid Last Name");
     }
 
     /**
      * Validates the user's email.
      */
-    public boolean validateEmail(String email) {
-        return Pattern.matches(EMAIL_REGEX, email);
+    public boolean validateEmail(String email) throws UserRegistrationException {
+
+        if (Pattern.matches(EMAIL_REGEX, email)) {
+            return true;
+        }
+
+        throw new UserRegistrationException(
+                UserRegistrationException.ExceptionType.INVALID_EMAIL,
+                "Invalid Email");
     }
+
 
     /**
      * Validates the user's mobile number.
      */
-    public boolean validateMobileNumber(String mobileNumber) {
-        return Pattern.matches(MOBILE_REGEX, mobileNumber);
+    public boolean validateMobileNumber(String mobileNumber) throws UserRegistrationException {
+
+        if (Pattern.matches(MOBILE_REGEX, mobileNumber)) {
+            return true;
+        }
+
+        throw new UserRegistrationException(
+                UserRegistrationException.ExceptionType.INVALID_MOBILE_NUMBER,
+                "Invalid Mobile Number");
     }
 
     /**
@@ -61,7 +91,14 @@ public class UserValidator {
      * Rule 3: At least one numeric digit
      * Rule 4: Exactly one special character
      */
-    public boolean validatePassword(String password) {
-        return Pattern.matches(PASSWORD_REGEX, password);
+    public boolean validatePassword(String password) throws UserRegistrationException {
+
+        if (Pattern.matches(PASSWORD_REGEX, password)) {
+            return true;
+        }
+
+        throw new UserRegistrationException(
+                UserRegistrationException.ExceptionType.INVALID_PASSWORD,
+                "Invalid Password");
     }
 }

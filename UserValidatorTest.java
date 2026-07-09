@@ -24,68 +24,75 @@ public class UserValidatorTest {
     // ---------- First Name ----------
 
     @Test
-    public void givenValidFirstName_WhenValidated_ShouldReturnTrue() {
+    public void givenValidFirstName_WhenValidated_ShouldReturnTrue() throws UserRegistrationException {
         Assertions.assertTrue(validator.validateFirstName("Saravanan"));
     }
 
     @Test
-    public void givenInvalidFirstName_WhenValidated_ShouldReturnFalse() {
-        Assertions.assertFalse(validator.validateFirstName("saravanan"));
+    public void givenInvalidFirstName_WhenValidated_ShouldThrowException() {
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validateFirstName("saravanan"));
     }
 
     // ---------- Last Name ----------
 
     @Test
-    public void givenValidLastName_WhenValidated_ShouldReturnTrue() {
+    public void givenValidLastName_WhenValidated_ShouldReturnTrue() throws UserRegistrationException {
         Assertions.assertTrue(validator.validateLastName("Kumar"));
     }
 
     @Test
-    public void givenInvalidLastName_WhenValidated_ShouldReturnFalse() {
-        Assertions.assertFalse(validator.validateLastName("ku"));
+    public void givenInvalidLastName_WhenValidated_ShouldThrowException() {
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validateLastName("ku"));
     }
 
     // ---------- Email ----------
 
     @Test
-    public void givenValidEmail_WhenValidated_ShouldReturnTrue() {
+    public void givenValidEmail_WhenValidated_ShouldReturnTrue() throws UserRegistrationException {
         Assertions.assertTrue(validator.validateEmail("abc@yahoo.com"));
     }
 
     @Test
-    public void givenInvalidEmail_WhenValidated_ShouldReturnFalse() {
-        Assertions.assertFalse(validator.validateEmail("abc@.com"));
+    public void givenInvalidEmail_WhenValidated_ShouldThrowException() {
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validateEmail("abc@.com"));
     }
 
     // ---------- Mobile Number ----------
 
     @Test
-    public void givenValidMobileNumber_WhenValidated_ShouldReturnTrue() {
+    public void givenValidMobileNumber_WhenValidated_ShouldReturnTrue() throws UserRegistrationException {
         Assertions.assertTrue(validator.validateMobileNumber("91 9876543210"));
     }
 
     @Test
-    public void givenInvalidMobileNumber_WhenValidated_ShouldReturnFalse() {
-        Assertions.assertFalse(validator.validateMobileNumber("919876543210"));
+    public void givenInvalidMobileNumber_WhenValidated_ShouldThrowException() {
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validateMobileNumber("919876543210"));
     }
 
     // ---------- Password ----------
 
     @Test
-    public void givenValidPassword_WhenValidated_ShouldReturnTrue() {
+    public void givenValidPassword_WhenValidated_ShouldReturnTrue() throws UserRegistrationException {
         Assertions.assertTrue(validator.validatePassword("Password1@"));
     }
 
     @Test
-    public void givenInvalidPassword_WhenValidated_ShouldReturnFalse() {
-        Assertions.assertFalse(validator.validatePassword("password"));
+    public void givenInvalidPassword_WhenValidated_ShouldThrowException() {
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validatePassword("password"));
     }
 
     // ---------- Parameterized Test : Valid Emails ----------
 
-    /**
-     * Validates multiple valid email addresses.
-     */
     @ParameterizedTest
     @ValueSource(strings = {
             "abc@yahoo.com",
@@ -98,15 +105,14 @@ public class UserValidatorTest {
             "abc@gmail.com.com",
             "abc+100@gmail.com"
     })
-    public void givenMultipleValidEmails_WhenValidated_ShouldReturnTrue(String email) {
+    public void givenMultipleValidEmails_WhenValidated_ShouldReturnTrue(String email)
+            throws UserRegistrationException {
+
         Assertions.assertTrue(validator.validateEmail(email));
     }
 
     // ---------- Parameterized Test : Invalid Emails ----------
 
-    /**
-     * Validates multiple invalid email addresses.
-     */
     @ParameterizedTest
     @ValueSource(strings = {
             "abc",
@@ -123,7 +129,10 @@ public class UserValidatorTest {
             "abc@gmail.com.1a",
             "abc@gmail.com.aa.au"
     })
-    public void givenMultipleInvalidEmails_WhenValidated_ShouldReturnFalse(String email) {
-        Assertions.assertFalse(validator.validateEmail(email));
+    public void givenMultipleInvalidEmails_WhenValidated_ShouldThrowException(String email) {
+
+        Assertions.assertThrows(
+                UserRegistrationException.class,
+                () -> validator.validateEmail(email));
     }
 }
