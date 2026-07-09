@@ -11,8 +11,9 @@ public class UserValidator {
     private static final String NAME_REGEX = "^[A-Z][a-z]{2,}$";
 
     // Email Regex
+    // Supports all valid email samples and rejects invalid samples
     private static final String EMAIL_REGEX =
-            "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$";
+            "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,}){1,2}$";
 
     // Mobile Number Regex
     private static final String MOBILE_REGEX = "^[0-9]{2}\\s[0-9]{10}$";
