@@ -1,6 +1,6 @@
 # User Registration System
 
-A Java-based User Registration application that validates user details using **Regular Expressions (Regex)** and **JUnit 5**. The project is developed incrementally through multiple use cases, following clean coding practices and modular design.
+A Java-based User Registration application that validates user details using **Regular Expressions (Regex)**, **Lambda Expressions**, **Custom Exceptions**, and **JUnit 5**. The project is implemented incrementally through multiple use cases, following clean coding principles and modular design.
 
 ## Features
 
@@ -9,10 +9,11 @@ A Java-based User Registration application that validates user details using **R
 - Validate Email Address
 - Validate Mobile Number
 - Validate Password
-- Test valid and invalid email samples
-- JUnit 5 test cases for all validations
-- Parameterized JUnit tests for multiple email inputs
-- Custom Exception handling for invalid user details
+- Validate multiple email samples
+- Custom Exception handling for invalid user inputs
+- JUnit 5 Happy and Sad test cases
+- Parameterized JUnit tests for email validation
+- Lambda Expression-based validation using Functional Interfaces
 
 ## Validation Rules
 
@@ -31,16 +32,21 @@ A Java-based User Registration application that validates user details using **R
 ### Mobile Number
 - Country code followed by a space.
 - Ten-digit mobile number.
-- Example:
-  ```
-  91 9876543210
-  ```
+
+**Example:**
+
+```text
+91 9876543210
+```
 
 ### Password
-- Minimum 8 characters.
-- At least one uppercase letter.
-- At least one numeric digit.
-- Exactly one special character.
+
+Must satisfy all the following rules:
+
+- Minimum 8 characters
+- At least one uppercase letter
+- At least one numeric digit
+- Exactly one special character
 
 ## Project Structure
 
@@ -53,6 +59,7 @@ UserRegistration/
 │           └── userregistration/
 │               ├── UserRegistration.java
 │               ├── UserValidator.java
+│               ├── UserValidation.java
 │               ├── UserRegistrationException.java
 │               ├── EmailValidationTest.java
 │               └── UserValidatorTest.java
@@ -62,6 +69,8 @@ UserRegistration/
 
 - Java
 - Regular Expressions (Regex)
+- Java 8 Lambda Expressions
+- Functional Interface
 - JUnit 5
 - IntelliJ IDEA
 
@@ -79,13 +88,25 @@ UserRegistration/
 
 ## Exception Handling
 
-A custom exception (`UserRegistrationException`) is used to identify invalid user inputs with specific exception types:
+The project uses a custom exception (`UserRegistrationException`) to handle invalid user inputs.
+
+Supported exception types include:
 
 - Invalid First Name
 - Invalid Last Name
 - Invalid Email
 - Invalid Mobile Number
 - Invalid Password
+
+## Lambda Expression Support
+
+A Functional Interface (`UserValidation`) is used to implement validation logic through Lambda Expressions for:
+
+- First Name Validation
+- Last Name Validation
+- Email Validation
+- Mobile Number Validation
+- Password Validation
 
 ## Git Workflow
 
@@ -105,13 +126,16 @@ main
     ├── feature/uc9-email-validation-test
     ├── feature/uc10-junit-user-validation
     ├── feature/uc11-parameterized-email-test
-    └── feature/uc12-custom-exception
+    ├── feature/uc12-custom-exception
+    └── feature/uc13-lambda-user-validation
 ```
 
 ## Learning Outcomes
 
-- Object-Oriented Programming
-- Regular Expressions in Java
+- Object-Oriented Programming (OOP)
+- Regular Expressions (Regex)
+- Java 8 Lambda Expressions
+- Functional Interfaces
 - Exception Handling
 - Custom Exceptions
 - JUnit 5 Testing
