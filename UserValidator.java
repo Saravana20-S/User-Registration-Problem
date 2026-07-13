@@ -29,76 +29,53 @@ public class UserValidator {
     /**
      * Validates the user's first name.
      */
-    public boolean validateFirstName(String firstName) throws UserRegistrationException {
-
+    // Lambda to validate First Name
+    public UserValidation firstNameValidator = firstName -> {
         if (Pattern.matches(NAME_REGEX, firstName)) {
             return true;
         }
-
         throw new UserRegistrationException(
                 UserRegistrationException.ExceptionType.INVALID_FIRST_NAME,
                 "Invalid First Name");
-    }
+    };
 
-
-    /**
-     * Validates the user's last name.
-     */
-    public boolean validateLastName(String lastName) throws UserRegistrationException {
-
+    // Lambda to validate Last Name
+    public UserValidation lastNameValidator = lastName -> {
         if (Pattern.matches(NAME_REGEX, lastName)) {
             return true;
         }
-
         throw new UserRegistrationException(
                 UserRegistrationException.ExceptionType.INVALID_LAST_NAME,
                 "Invalid Last Name");
-    }
+    };
 
-    /**
-     * Validates the user's email.
-     */
-    public boolean validateEmail(String email) throws UserRegistrationException {
-
+    // Lambda to validate Email
+    public UserValidation emailValidator = email -> {
         if (Pattern.matches(EMAIL_REGEX, email)) {
             return true;
         }
-
         throw new UserRegistrationException(
                 UserRegistrationException.ExceptionType.INVALID_EMAIL,
                 "Invalid Email");
-    }
+    };
 
-
-    /**
-     * Validates the user's mobile number.
-     */
-    public boolean validateMobileNumber(String mobileNumber) throws UserRegistrationException {
-
-        if (Pattern.matches(MOBILE_REGEX, mobileNumber)) {
+    // Lambda to validate Mobile Number
+    public UserValidation mobileValidator = mobile -> {
+        if (Pattern.matches(MOBILE_REGEX, mobile)) {
             return true;
         }
-
         throw new UserRegistrationException(
                 UserRegistrationException.ExceptionType.INVALID_MOBILE_NUMBER,
                 "Invalid Mobile Number");
-    }
+    };
 
-    /**
-     * Validates the user's password.
-     * Rule 1: Minimum 8 characters
-     * Rule 2: At least one uppercase letter
-     * Rule 3: At least one numeric digit
-     * Rule 4: Exactly one special character
-     */
-    public boolean validatePassword(String password) throws UserRegistrationException {
-
+    // Lambda to validate Password
+    public UserValidation passwordValidator = password -> {
         if (Pattern.matches(PASSWORD_REGEX, password)) {
             return true;
         }
-
         throw new UserRegistrationException(
                 UserRegistrationException.ExceptionType.INVALID_PASSWORD,
                 "Invalid Password");
-    }
+    };
 }

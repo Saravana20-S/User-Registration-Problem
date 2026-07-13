@@ -34,19 +34,19 @@ public class UserRegistration {
         try {
 
             System.out.println("First Name : " +
-                    (validator.validateFirstName(firstName) ? "Valid" : "Invalid"));
+                    (validator.firstNameValidator.validate(firstName) ? "Valid" : "Invalid"));
 
             System.out.println("Last Name : " +
-                    (validator.validateLastName(lastName) ? "Valid" : "Invalid"));
+                    (validator.lastNameValidator.validate(lastName) ? "Valid" : "Invalid"));
 
             System.out.println("Email : " +
-                    (validator.validateEmail(email) ? "Valid" : "Invalid"));
+                    (validator.emailValidator.validate(email) ? "Valid" : "Invalid"));
 
             System.out.println("Mobile No. : " +
-                    (validator.validateMobileNumber(mobileNumber) ? "Valid" : "Invalid"));
+                    (validator.mobileValidator.validate(mobileNumber) ? "Valid" : "Invalid"));
 
             System.out.println("Password : " +
-                    (validator.validatePassword(password) ? "Valid" : "Invalid"));
+                    (validator.passwordValidator.validate(password) ? "Valid" : "Invalid"));
 
         } catch (UserRegistrationException e) {
             System.out.println(e.getMessage());

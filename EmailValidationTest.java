@@ -5,7 +5,7 @@ package com.oops.userregistration;
  */
 public class EmailValidationTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserRegistrationException {
 
         UserValidator validator = new UserValidator();
 
@@ -44,7 +44,7 @@ public class EmailValidationTest {
         for (String email : validEmails) {
             System.out.printf("%-30s : %s%n",
                     email,
-                    validator.validateEmail(email) ? "Valid" : "Invalid");
+                    validator.emailValidator.validate(email) ? "Valid" : "Invalid");
         }
 
         System.out.println("\n========== INVALID EMAILS ==========");
@@ -52,7 +52,7 @@ public class EmailValidationTest {
         for (String email : invalidEmails) {
             System.out.printf("%-30s : %s%n",
                     email,
-                    validator.validateEmail(email) ? "Valid" : "Invalid");
+                    validator.emailValidator.validate(email) ? "Valid" : "Invalid");
         }
     }
 }
